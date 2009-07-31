@@ -30,7 +30,7 @@ A sample URL to get started:
 
 http://localhost:4567/bd?start_date=1-1-09&end_date=15-1-09&tp=100&d3-1-09=10&d5-1-09=30&d13-1-09=12
 
-This is the result of about 4 hours of hacking about with sinatra and scruffy for the first time. Hopefully it will improve. Contributions welcome.
+This is the result of about 4 hours of hacking about with sinatra and scruffy for the first time. Hopefully it will improve. Scruffy is being a bit difficult with some of the vertical numbers ... will have to play with it. Contributions welcome.
 
 Have fun!
 
