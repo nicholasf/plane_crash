@@ -24,7 +24,7 @@ end_date=DD-MM-YY, e.g. 15-1-09
 tp = total points for iteraton, e.g. 100
 dDD-MM-YY=points scored on day, e.g. d13-1-09=12
 
-You may make as many parameters of the d type as you wish to indicate point scoring on the day. Obviously it's a bit onerous to build URLs this way, but form input or link generation from Redmine is not far off.
+You may make as many parameters of the d type as you wish to indicate point scoring to represent days in the spring (only one d entry per day, holding the day total). Obviously it's a bit onerous to build URLs this way, but form input or link generation from Redmine is not far off.
 
 A sample URL to get started:
 
@@ -37,7 +37,7 @@ Have fun!
 
 http://localhost:4567/bd?start_date=1-1-09&end_date=15-1-09&tp=100&d3-1-09=10&d5-1-09=30&d13-1-09=12
 
-http://localhost:9393/bd?start_date=31-7-09&end_date=7-8-09&tp=46&d31-7-09=3&d3-8-09=10&d4-08-09=16
+http://localhost:4567/bd?start_date=31-7-09&end_date=7-8-09&tp=46&d31-7-09=3&d3-8-09=10&d4-08-09=16&d5-8-09=3
 
 
 # http://localhost:9393/bd?start_date=1-1-09&end_date=15-1-09&tp=46&d-1-09=10&d5-1-09=30&d13-1-09=12

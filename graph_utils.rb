@@ -46,14 +46,11 @@ module GraphUtils
     
     params.keys.each do |k|
       if k[0..0] == 'd'
-        puts "* #{k}"
         bits = k[1..-1].split("-")
         progressive_day = bits_to_date(bits)
         dates[progressive_day.to_s] = params[k].to_i
       end
     end
-    
-    puts "dates size is #{dates.keys.size}"
     
     # progress.each_index do |i|
     (0..days).each do |i|
