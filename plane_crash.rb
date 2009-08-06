@@ -7,8 +7,18 @@ require 'ruby-debug'
 include GraphUtils
 
 get "/" do
-  puts `env`
-  "use /bd"
+  "Visit /bd (burdown) with following parameters on a GET:
+
+  start_date=DD-MM-YY, e.g. 1-1-09
+  end_date=DD-MM-YY, e.g. 15-1-09
+  tp = total points for iteraton, e.g. 100
+  dDD-MM-YY=points scored on day, e.g. d13-1-09=12
+
+  You may make as many parameters of the d type as you wish to indicate point scoring on the day. Obviously it's a bit onerous to build URLs this way, but form input or link generation from Redmine is not far off.
+
+  A sample URL to get started:
+
+  http://localhost:4567/bd?start_date=1-1-09&end_date=15-1-09&tp=100&d3-1-09=10&d5-1-09=30&d13-1-09=12"
 end
 
 get "/bd" do

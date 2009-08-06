@@ -40,25 +40,39 @@ module GraphUtils
   #interprets values of d2-1-09=3 into 3 points scored on the 2-1-09 and returns them in an array
   def gather_point_progress_intervals(params, start_date, end_date, top)
     days = (end_date - start_date).to_i
-    progress = Array.new(days)
+    progress = Array.new(days * 2, top)
     
     dates = {}
     
     params.keys.each do |k|
       if k[0..0] == 'd'
+        puts "* #{k}"
         bits = k[1..-1].split("-")
         progressive_day = bits_to_date(bits)
         dates[progressive_day.to_s] = params[k].to_i
       end
     end
     
-    progress.each_index do |i|
-      day = start_date + i
+    puts "dates size is #{dates.keys.size}"
+    
+    # progress.each_index do |i|
+    (0..days).each do |i|
+      day = start_date + (i)
       if dates[day.to_s]
-        
-        progress[i] = top - dates[day.to_s]
+        # progress[i/2 + 1] = top - dates[day.to_s]
+        begin
+          progress[(i*2) + 1] = top - dates[day.to_s]
+          progress[(i*2) + 2] = top - dates[day.to_s]
+        rescue 
+          end
         top = top - dates[day.to_s]
-      end
+      else
+        begin
+          progress[(i*2) + 1] = top
+          progress[(i*2) + 2] = top
+        rescue 
+        end
+      end 
     end
     
     return progress
