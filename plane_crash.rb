@@ -38,7 +38,8 @@ get "/bd" do
   
   graph.point_markers = point_markers
   #debugger
-  graph.add :line, 'Avg', generate_ideal_points(point_markers.size, total_points.to_i)
+  # graph.add :line, 'Avg', generate_ideal_points(point_markers.size, total_points.to_i)
+  graph.add :line, 'Ideal', [total_points.to_i, 0]
   graph.add :line, 'Actual', progress
   
   # graph.add :line, 'Avg', [100,75,25,0]
