@@ -7,7 +7,7 @@ require 'ruby-debug'
 include GraphUtils
 
 get "/" do
-  "<pre>Visit /bd (burdown) with following parameters on a GET:
+  "<pre>Visit /bd (burdown) for a png or bd_svg for a svg with following parameters on a GET:
   
   start_date=DD-MM-YY, e.g. 1-1-09
   end_date=DD-MM-YY, e.g. 15-1-09
@@ -24,6 +24,30 @@ end
 
 get "/bd" do
   check_public_dir()
+  graph = generate_graph(params)
+
+  file_name = "bd_#{Time.now.to_i}.png"
+  graph.render :width => 600, :height => 400, :to => "public/#{file_name}", :as => 'png'
+  redirect "#{file_name}"
+end
+
+get "/bd_svg" do
+  check_public_dir()
+  graph = generate_graph(params)
+
+  file_name = "bd_#{Time.now.to_i}.svg"
+  graph.render :to => "public/#{file_name}"
+  redirect "#{file_name}"
+end
+
+private
+def check_public_dir
+  unless File.exist?("public")
+    Dir.mkdir("public")
+  end
+end
+
+def generate_graph(params)
   start_date = params_to_date(params[:start_date])
   end_date = params_to_date(params[:end_date])      
   total_points = params[:tp]
@@ -42,15 +66,5 @@ get "/bd" do
   graph.add :line, 'Ideal', [total_points.to_i, 0]
   graph.add :line, 'Actual', progress
   
-  # graph.add :line, 'Avg', [100,75,25,0]
-  file_name = "bd_#{Time.now.to_i}.svg"
-  graph.render :to => "public/#{file_name}"
-  redirect "#{file_name}"
-end
-
-private
-def check_public_dir
-  unless File.exist?("public")
-    Dir.mkdir("public")
-  end
+  return graph
 end
