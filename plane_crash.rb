@@ -55,14 +55,13 @@ def generate_graph(params)
   
   graph = Scruffy::Graph.new(:theme => Scruffy::Themes::Keynote.new)
 
-  graph.title = "Burndown - #{start_date.strftime('%Y-%m-%d')} - #{end_date.strftime('%Y-%m-%d')}"
+  title = params[:title] ? params[:title] : "Burndown"
+  graph.title = "#{title} - #{start_date.strftime('%Y-%m-%d')} - #{end_date.strftime('%Y-%m-%d')}"
   graph.renderer = Scruffy::Renderers::Standard.new
   
   point_markers = generate_point_markers(start_date, end_date)
   
   graph.point_markers = point_markers
-  #debugger
-  # graph.add :line, 'Avg', generate_ideal_points(point_markers.size, total_points.to_i)
   graph.add :line, 'Ideal', [total_points.to_i, 0]
   graph.add :line, 'Actual', progress
   

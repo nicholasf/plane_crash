@@ -5,6 +5,7 @@ Dependencies
 sudo gem install sinatra
 sudo gem install scruffy
 
+Scruffy uses RMagick (which uses ImageMagick) to generate PNGs. 
 
 Running
 -------
@@ -14,10 +15,14 @@ ruby plane_crash
 
 (make sure you have created a public directory for the SVG documents to be stored in)
 
+Example Graphs
+--------------
+See the examples directory
+
 Generation
 ----------
 
-Visit /bd (burdown) with following parameters on a GET:
+Visit /bd (for a png) or /bd_svg with the following parameters on a GET:
 
 start_date=DD-MM-YY, e.g. 1-1-09
 end_date=DD-MM-YY, e.g. 15-1-09
@@ -34,31 +39,22 @@ This is the result of about 4 hours of hacking about with sinatra and scruffy fo
 
 Have fun!
 
+Some URLs I've used in the past.
 
 http://localhost:4567/bd?start_date=1-1-09&end_date=15-1-09&tp=100&d3-1-09=10&d5-1-09=30&d13-1-09=12
 
 http://localhost:4567/bd?start_date=31-7-09&end_date=7-8-09&tp=46&d31-7-09=3&d3-8-09=10&d4-08-09=16&d5-8-09=3&d6-8-09=3&d7-8-09=3
 
-http://localhost:4567/bd?start_date=7-8-09&end_date=14-8-09&tp=54&d8-8-09=3&d10-8-09=8&d11-8-09=13&d12-8-09=5&d13-8-09=14
+http://localhost:4567/bd?start_date=7-8-09&end_date=14-8-09&tp=54&d8-8-09=3&d10-8-09=8&d11-8-09=16&d12-8-09=5&d13-8-09=16&d14-8-09=7&title=Luna
 
-# http://localhost:9393/bd?start_date=1-1-09&end_date=15-1-09&tp=46&d-1-09=10&d5-1-09=30&d13-1-09=12
-# 
-# http://www.ibrasten.com/articles/2006/08/14/scruffy-0-2-0
-
-spumegrak
+http://localhost:4567/bd?start_date=17-8-09&end_date=28-8-09&tp=103&title=Deimos
 
 
 
+Feedback
+--------
+If you run plane_crash or have any suggestions for it please let me know.
 
-------
-
-a granule can create data somewhere if it exists, usually in a database
-
-- it shouldn't be in a migration - this often creates complex dependencies on earlier migrations to set up other forms of data.
-- it shouldn't be in a fixture (they're too dumb)
-
-it is able to check if the data exists and, if not, perform an action to ensure that it does
-
-
+I have been thinking about setting up some integration rules for various projects (e.g. a task which can integrate with Redmine/Unfuddle, XYZ Project tracker, and generate burndowns based on certain rules and email them on a daily basis).
 
 
