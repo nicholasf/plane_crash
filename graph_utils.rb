@@ -31,9 +31,9 @@ module GraphUtils
           next
         end
         
-        points[i] = points[i -1] - top.to_f/intervals.to_f
+        points[i] = points[i -1] - top.to_f/(intervals - 1).to_f
       end
-      
+
       points
     end
     
