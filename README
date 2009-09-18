@@ -1,4 +1,4 @@
-Plane crash produces simple SVG documents based on input parameters for a burndown. The goal is build a central lib. which will easily integrate with XYZ ticket and project tracking SCRUM system.
+Plane crash produces PNGs based on input parameters for a burndown. 
 
 Dependencies
 ------------
@@ -13,7 +13,7 @@ To start:
 
 ruby plane_crash
 
-(make sure you have created a public directory for the SVG documents to be stored in)
+(make sure you have created a public directory for the PNGs)
 
 Example Graphs
 --------------
@@ -22,7 +22,7 @@ See the examples directory
 Generation
 ----------
 
-Visit /bd (for a png) or /bd_svg with the following parameters on a GET:
+Visit /bd with the following parameters on a GET:
 
 start_date=DD-MM-YY, e.g. 1-1-09
 end_date=DD-MM-YY, e.g. 15-1-09
