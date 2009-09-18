@@ -3,9 +3,7 @@ Plane crash produces PNGs based on input parameters for a burndown.
 Dependencies
 ------------
 sudo gem install sinatra
-sudo gem install scruffy
-
-Scruffy uses RMagick (which uses ImageMagick) to generate PNGs. 
+sudo gem install gruff
 
 Running
 -------
