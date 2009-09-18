@@ -1,13 +1,14 @@
 require 'rubygems'
 require 'sinatra'
-require 'scruffy'
+require 'gruff'
 require 'graph_utils'
 require 'ruby-debug'
+require 'renshi'
 
 include GraphUtils
 
 get "/" do
-  "<pre>Visit /bd (burdown) for a png or bd_svg for a svg with following parameters on a GET:
+  "<pre>Visit /bd (burdown) for a png with following parameters on a GET:
   
   start_date=DD-MM-YY, e.g. 1-1-09
   end_date=DD-MM-YY, e.g. 15-1-09
@@ -27,16 +28,7 @@ get "/bd" do
   graph = generate_graph(params)
 
   file_name = "bd_#{Time.now.to_i}.png"
-  graph.render :width => 600, :height => 400, :to => "public/#{file_name}", :as => 'png'
-  redirect "#{file_name}"
-end
-
-get "/bd_svg" do
-  check_public_dir()
-  graph = generate_graph(params)
-
-  file_name = "bd_#{Time.now.to_i}.svg"
-  graph.render :to => "public/#{file_name}"
+  graph.write("public/#{file_name}")
   redirect "#{file_name}"
 end
 
@@ -53,17 +45,17 @@ def generate_graph(params)
   total_points = params[:tp]
   progress = gather_point_progress_intervals(params, start_date, end_date, total_points.to_i)
   
-  graph = Scruffy::Graph.new(:theme => Scruffy::Themes::Keynote.new)
+  graph = Gruff::Line.new
 
   title = params[:title] ? params[:title] : "Burndown"
   graph.title = "#{title} - #{start_date.strftime('%Y-%m-%d')} - #{end_date.strftime('%Y-%m-%d')}"
-  graph.renderer = Scruffy::Renderers::Standard.new
   
   point_markers = generate_point_markers(start_date, end_date)
   
-  graph.point_markers = point_markers
-  graph.add :line, 'Ideal', [total_points.to_i, 0]
-  graph.add :line, 'Actual', progress
+  graph.labels = point_markers
+  
+  graph.data('Ideal', generate_ideal_points(progress.size, total_points.to_i))
+  graph.data('Actual', progress)
   
   return graph
 end

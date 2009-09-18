@@ -13,25 +13,25 @@ module GraphUtils
   def generate_point_markers(start_date, end_date)
     diff_days = (end_date - start_date).to_i
 
-    days = []
-
+    days = {}
+    baseline_idx = 0
     (0..diff_days).each do |day|
       day_date = start_date + day
-      days << day_date.strftime("%d")
+      days[baseline_idx] = day_date.strftime("%d")
+      baseline_idx += 2
     end
     days
   end
   
   def generate_ideal_points(intervals, top)
-    intervals_qtr = intervals/4
-    points = Array.new(intervals_qtr)
+    points = Array.new(intervals)
       points.each_index do |i|
         if i == 0
           points[i] = top
           next
         end
         
-        points[i] = points[i -1] - top/intervals_qtr
+        points[i] = points[i -1] - top.to_f/intervals.to_f
       end
       
       points
