@@ -1,3 +1,5 @@
+require 'date'
+
 module GraphUtils
   
   def bits_to_date(bits)

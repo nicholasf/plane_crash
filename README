@@ -1,4 +1,4 @@
-Plane crash produces PNGs based on input parameters for a burndown. 
+Plane crash produces PNGs based on input parameters for a burndown. At the moment it is dependent on gruff, which is only friendly to ruby 1.8.7 and earlier.
 
 Dependencies
 ------------
@@ -46,6 +46,17 @@ http://localhost:4567/bd?start_date=7-8-09&end_date=14-8-09&tp=54&d8-8-09=3&d10-
 http://localhost:4567/bd?start_date=17-8-09&end_date=28-8-09&tp=103&title=Deimos
 
 http://localhost:9393/bd?start_date=3-9-09&end_date=17-9-09&tp=87&d4-9-09=8&d9-9-09=48&d11-9-09=3&d14-9-09=3&d15-9-09=24&d16-9-09=1&title=Phobos
+
+
+http://localhost:9393/bd?start_date=18-9-09&end_date=25-9-09&tp=67&d17-9-09=1Z&d22-9-09=13&d23-9-09=8&d24-9-09=36&d25-9-09=3&title=Callisto
+
+http://localhost:9393/bd?start_date=22-10-09&end_date=30-10-09&tp=50&title=Ganymede&d29-10-09=16
+
+http://localhost:4567/bd?start_date=30-10-09&end_date=4-11-09&tp=82&title=Io&d3-11-09=24
+
+http://localhost:4567/bd?start_date=6-11-09&end_date=20-11-09&tp=61&title=Leda&d6-11-09=24=4&d12-11-09=3&d17-11-09=10&d19-11-09=8&d20-11-09=8
+
+http://localhost:4567/bd?start_date=24-11-09&end_date=4-12-09&tp=95&title=Carpo&d26-11-09=5&d1-12-09=8&d2-12-09=3&d3-12-09=34&d27-11-09=3&d4-12-09=3&d26-11-09=5
 
 Feedback
 --------
